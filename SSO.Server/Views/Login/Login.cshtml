@@ -1,230 +1,109 @@
 ﻿
 @{
+    ViewData["Title"] = "Login";
     Layout = null;
 }
 
-<div class="main">
-    <div class="bg">
-        <img src="/Img/bg.jpg" />
-    </div>
-    <div class="container">
-        <div class="container-content">
-            <form class="form-panel" method="post">
-                <div class="logibbox">
-                    <div class="form-head formmargin">
-                        <h1 style="color:white">后台管理中心</h1>
-                    </div>
-                    <div class="form-content formmargin">
-                        <div class="field">
-                            <input type="text" minlength="2" class="input input-big" placeholder="请输入用户名" id="name" name="UserAccount" />
-                        </div>
-                        <div class="field">
-                            <input type="password" maxlength="16" class="input input-big" id="password" name="UserPass" placeholder="登录密码" />
-                        </div>
-                    </div>
-                    <div class="form-tail formmargin">
-                        <input type="submit" class="button input-big" id="btnlogin" value="登录">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
+<link href="~/Content/assets/css/stylesheet.css" rel="stylesheet" />
+<link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/layui/css/layui.css" rel="stylesheet" />
 <style>
-    .bg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100px;
-        height: 100px;
-        z-index: -1;
+    .login-title {
+        padding: 20px 0px 28px 0px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #009688;
     }
 
-        .bg img {
-            width: 1519px;
-            height: 772px;
-        }
-
-    .login_div {
-        background: #fff;
-        margin: 160px 900px;
-        height: 450px;
-        width: 400px;
-        border-top-left-radius: 3%;
-        border-top-right-radius: 3%;
-        border-bottom-left-radius: 3%;
-        border-bottom-right-radius: 3%;
-        border: 1px solid rgb(255, 255, 255);
+    .login-body {
+        width: 380px;
+        height: 380px;
         background-color: #fff;
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -190px;
+        margin-left: -190px;
+        border-radius: 3px;
+        padding: 15px 22px;
+        box-shadow: 0 0 10px #eee;
     }
 
-    .login_child {
-        width: 350px;
-        margin-top: 100px;
-        margin-left: 15px;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        font: inherit;
-        color: #333;
-        vertical-align: baseline;
-    }
-
-        *:before, *:after {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-    .clearfix:after, .container:after {
-        content: " ";
-        display: block;
-        height: 0;
-        clear: both;
-        visibility: hidden;
-        overflow: hidden;
-    }
-
-    .container-content {
-        margin: 150px auto;
-        width: 400px;
+    .login-item {
+        margin-top: 20px;
+        padding: 0px 10px;
         position: relative;
     }
 
-    .form-panel {
-        /*// border: 1px solid ;*/
-        border-radius: 4px;
-        display: block;
-    }
-
-    .logibbox .formmargin {
-        margin: 0 40px;
-    }
-
-    .form-panel .form-head {
-        margin: 20px;
-        padding-top: 20px;
-        display: block;
-        text-align: center;
-        /*font-weight: bold;*/
-        font-size: 24px;
-    }
-
-    .form-content {
-        display: block;
-        height: 230px;
-    }
-
-        .form-content .field {
-            height: 33.33%;
-            font-size: 14px;
-            font: inherit;
-            vertical-align: baseline;
+        .login-item .layui-input {
+            padding-left: 36px;
         }
 
-            .form-content .field .input {
-                display: inline-block;
-                width: 318px; /*294px  318px*/
-                line-height: 1;
-            }
-
-            .form-content .field .inputs {
-                display: inline-block;
-                width: 218px; /*196px 218px*/
-                line-height: 1;
-            }
-
-            .form-content .field .login_verifycode {
-                float: right;
-                margin-top: 1px;
-                display: inline-block;
-                text-align: center;
-                cursor: pointer;
-                width: 100px;
-                height: 36px;
-                padding-right: 0;
-                padding-left: 0;
-                /*border: 1px solid #d5d5d5;*/
-                font-size: 14px;
-                color: #727272;
-                background: white;
-                margin-left: -4px;
-                border-top-right-radius: 5px;
-                border-bottom-right-radius: 5px;
-            }
-
-        .form-content .input-big,
-        .form-tail .button {
-            padding: 10px;
-            font-size: 16px;
-            line-height: 24px;
-            border-radius: 10px;
-            border: 1px solid #d5d5d5;
-            box-sizing: border-box;
-            box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-            outline: none;
+        .login-item label {
+            position: absolute;
+            color: #ccc9c9;
+            top: 1px;
+            width: 38px;
+            line-height: 36px;
+            text-align: center;
         }
-
-            .form-content .input-big,
-            .form-tail .button:focus {
-                border: 1px solid #afc2ec;
-                color: #4b4b4b
-            }
-
-            .form-content .input-big,
-            .form-tail .button[disabled] {
-                border: 1px solid #d5d5d5;
-                background: #fbfbfb;
-                color: #9f9f9f;
-                /*cursor:not-allowed*/
-            }
-
-
-    .validation-summary-errors li {
-        height: 43px;
-        line-height: 43px;
-        width: auto;
-        color: red;
-        text-align: center;
-        display: block;
-    }
-
-
-    .logibbox .formmargin .login_tips {
-        height: 44px;
-        line-height: 44px;
-        font-size: 14px;
-        text-align: center;
-        color: red;
-        box-shadow: none;
-    }
-
-    element.style {
-        color: white;
-        margin-top: 9px;
-        font-size: 30px;
-        margin-bottom: 48px;
-    }
-
-    .form-tail .button {
-        display: block;
-        width: 45%;
-        margin-top: -70px;
-        border: solid 1px #ddd;
-        border-color: #0ae;
-        border-radius: 4px;
-        color: #fff;
-        background-color: #0ae;
-        cursor: pointer;
-        margin-left: 60px;
-    }
-
-    element.style {
-        color: white;
-        margin-top: -30px;
-        margin-bottom: 45px;
-    }
 </style>
+
+<div id="particles-js"></div>
+
+<div class="login-body layui-form">
+    <div class="login-title">
+        登录
+    </div>
+    <div class="login-item">
+        <label class="layui-icon layui-icon-username"></label>
+        <input type="text" id="txtUserName" name="txtUserName" class="layui-input" placeholder="用户名" />
+    </div>
+    <div class="login-item">
+        <label class="layui-icon layui-icon-password"></label>
+        <input type="password" id="pwdUserPwd" name="pwdUserPwd" class="layui-input" placeholder="密码" />
+    </div>
+    <div class="login-item">
+        <button id="btnUserLogin" type="submit" class="layui-btn layui-btn-fluid" onclick="func(event)">登  录</button>
+    </div>
+
+</div>
+
+<script src="~/js/tether.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/Content/layui/layui.js"></script>
+<script src="~/Content/assets/js/jquery-3.1.1.min.js"></script>
+<script src="~/Content/assets/js/bootstrap.min.js"></script>
+<script src="~/Content/assets/js/particles.min.js"></script>
+<script src="~/Content/assets/js/app.js"></script>
+<script>
+    function func(event) {
+        //防止页面提交并跳转
+        event.preventDefault();
+        $.ajax({
+            url: "/Login/Login",
+            type: "post",
+            //关闭异步
+            //async: false,
+            data: { UserAccount: $("input[name='txtUserName']").val(), UserPass: $("input[name='pwdUserPwd']").val() },
+            beforeSend: function () {
+                $("#btnUserLogin").text('正在登录，请稍后……');
+            },
+            success: function (result) {
+                if (result.result == 0) {
+                    $("#btnUserLogin").text('登录成功，正在跳转页面……');
+                    //跳转页面
+                    location.href = result.url;
+                }
+                else if (result.result == 1) {
+                    $("#btnUserLogin").text("登录失败");
+                }
+                else if (result.result == 2) {
+                    $("#btnUserLogin").text("用户名或密码输入错误");
+                }
+            }
+        });
+    };
+</script>

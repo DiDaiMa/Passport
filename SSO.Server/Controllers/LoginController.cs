@@ -1,4 +1,5 @@
-﻿using IRepository;
+﻿using Common;
+using IRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
@@ -15,7 +16,7 @@ namespace SSO.Server.Controllers
     {
         private readonly JWTTokenOptions _tokenOptions;
         private IUserRepository _user;
-
+        private string LoginIn = Config.MySqlString;
         public LoginController(JWTTokenOptions tokenOptions,IUserRepository user)
         {
             _tokenOptions = tokenOptions;
@@ -81,13 +82,13 @@ namespace SSO.Server.Controllers
 
                 log.LoginMsg = "登录成功";
                 _user.AddLogin(log);
-                return Redirect("http://localhost:8080/Login?token=" + token);
+                return Json(new { url= "http://localhost:8080/Login" + "?token=" + token,result=0});
             }
             else
             {
                 log.LoginMsg = "登录失败";
                 _user.AddLogin(log);
-                return View();
+                return Json(new { result = 1 });
             }
         }
     }
